@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time Bus Tracker</title>
+    <link rel="stylesheet" href="passenger.css">
+    </head>
+<body>
+    <div class="container">
+        <header class="tracker-header">
+            <h1>Real-time Bus Tracker</h1>
+            <p>Track users and drivers within 5km radius with live updates</p>
+        </header>
+
+        <section class="control-panel">
+            <input type="text" placeholder="Enter location (e.g., New Yo)" class="location-input">
+            <button class="btn btn-primary">Search Users</button>
+            <button class="btn btn-secondary">Use My Location</button>
+            
+            <select class="radius-select">
+                <option>5 km</option>
+                <option>1 km</option>
+                <option>10 km</option>
+            </select>
+            
+            <button class="btn btn-primary">Start Tracking</button>
+            
+            <select class="user-type-select">
+                <option>All Users</option>
+                <option>Drivers</option>
+                <option>Passengers</option>
+            </select>
+        </section>
+
+        <p class="status-message">
+            Found <strong>8 users</strong> with location (<strong>+5 without location</strong>) within 5km
+        </p>
+
+        <div class="map-container">
+            <p style="text-align: center; padding: 100px; color: #aaa;">Map will render here.</p>
+        </div>
+    </div>
+</body>
+</html>

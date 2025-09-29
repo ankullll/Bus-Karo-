@@ -1,0 +1,120 @@
+/* --- Basic Reset and Variables --- */
+:root {
+    --gradient-start: #5a3f9e; /* Darker Purple */
+    --gradient-end: #7b5ee1; /* Lighter Purple/Blue */
+    --primary-color: #6a5acd; /* Button Blue/Purple */
+    --success-bg: #e6ffe6;
+    --success-text: #3c763d;
+    --card-bg: #ffffff;
+    --border-radius-card: 15px;
+    --border-radius-input: 5px;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+a{
+  text-decoration: none;
+  color: #fff;
+}
+/* --- Background Gradient --- */
+.background-gradient {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- Login Card Styling --- */
+.login-card {
+    width: 380px;
+    max-width: 90%;
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: var(--border-radius-card);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* --- Form Styling --- */
+.login-form {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    font-weight: 500;
+    color: #555;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: var(--border-radius-input);
+    font-size: 1em;
+    box-sizing: border-box; /* Ensures padding doesn't increase total width */
+    transition: border-color 0.2s;
+}
+
+.login-form input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+/* --- Action Button --- */
+.action-button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 30px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-input);
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.action-button:hover {
+    background-color: #5544b6;
+}
+
+.action-button:active {
+    transform: scale(0.99);
+}
+
+/* --- Status Message --- */
+.status-message {
+    padding: 10px;
+    border-radius: var(--border-radius-input);
+    font-size: 0.9em;
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+.success {
+    background-color: #d4edda; /* Light green background */
+    color: #155724; /* Dark green text */
+    border-color: #c3e6cb;
+}

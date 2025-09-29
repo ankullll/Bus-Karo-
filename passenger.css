@@ -1,0 +1,153 @@
+/* Basic Reset and Variables */
+:root {
+    --primary-color: #4b7bec; /* A nice blue for primary buttons */
+    --secondary-color: #6c757d; /* Gray for secondary buttons */
+    --gradient-start: #6a11cb;
+    --gradient-end: #2575fc;
+    --border-color: #ced4da;
+    --map-bg: #f8f9fa;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f9; /* Light gray background */
+}
+
+.container {
+    max-width: 1200px; /* Adjust as needed */
+    margin: 40px auto;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden; /* Ensures header gradient doesn't spill */
+}
+a{
+  text-decoration: none;
+  color: #fff;
+}
+
+/* --- Header Styling --- */
+.tracker-header {
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.tracker-header h1 {
+    margin: 0 0 5px 0;
+    font-size: 2em;
+    font-weight: 500;
+}
+
+.tracker-header p {
+    margin: 0;
+    font-size: 1em;
+    opacity: 0.9;
+}
+
+/* --- Control Panel Styling --- */
+.control-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+    background-color: #f8f9fa; /* Slightly off-white for the panel */
+    align-items: center;
+}
+
+/* General Input/Select Styling */
+.location-input, 
+.radius-select, 
+.user-type-select {
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1em;
+    height: 40px; /* Ensure uniform height with buttons */
+    box-sizing: border-box; /* Include padding/border in element's total width/height */
+}
+
+.location-input {
+    flex-grow: 1; /* Allows it to take up available space */
+    min-width: 200px;
+}
+
+.radius-select,
+.user-type-select {
+    /* Fixed width or auto based on content */
+    width: auto; 
+}
+
+/* Button Styling */
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    white-space: nowrap; /* Prevents text from wrapping */
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #3867d6; /* Slightly darker on hover */
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* --- Status Message --- */
+.status-message {
+    padding: 10px 20px;
+    margin: 0;
+    font-size: 0.95em;
+    background-color: #e9ecef; /* Light background for the info bar */
+    border-top: 1px solid var(--border-color);
+}
+
+.status-message strong {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* --- Map Container --- */
+.map-container {
+    width: 100%;
+    /* Set a fixed height for the map area */
+    height: 600px; 
+    background-color: var(--map-bg); 
+    border-top: 1px solid var(--border-color);
+}
+
+/* Optional: Make the controls look good on smaller screens */
+@media (max-width: 768px) {
+    .control-panel {
+        flex-direction: column;
+    }
+    .location-input,
+    .btn,
+    .radius-select,
+    .user-type-select {
+        width: 100%; /* Full width stack */
+        margin-bottom: 5px;
+    }
+    .container {
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+}

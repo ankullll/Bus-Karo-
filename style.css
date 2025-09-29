@@ -1,0 +1,57 @@
+/* style.css (basic responsive layout + user card) */
+*{box-sizing:border-box}
+body {
+  margin:0;
+  font-family: Inter, Poppins, system-ui, Arial;
+  display:flex;
+  height:100vh;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(135deg,#6f56ff,#8b64ff);
+  padding:20px;
+}
+.container{
+  display:flex;
+  width:900px;
+  max-width:100%;
+  border-radius:18px;
+  overflow:hidden;
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+a{
+  text-decoration: none;
+  color: #fff;
+}
+.left-section{
+  flex:1;
+  color:white;
+  padding:40px;
+}
+.left-section .icon{font-size:48px;margin-bottom:12px}
+.left-section h1{font-size:28px;margin-bottom:8px}
+.left-section .muted{opacity:0.95;margin-bottom:18px}
+.right-section{
+  width:420px;
+  background:white;
+  padding:28px;
+  border-radius:0 16px 16px 0;
+}
+.role-toggle{display:flex;background:#f3f3f3;padding:6px;border-radius:8px;margin-bottom:14px}
+.role-toggle button{flex:1;padding:10px;border:0;background:transparent;cursor:pointer;border-radius:6px;font-weight:600}
+.role-toggle button.active{background:linear-gradient(90deg,#6a5cff,#8e7aff);color:#fff}
+.signin-text{color:#666;margin-bottom:12px}
+label{display:block;margin-bottom:6px;font-weight:600;color:#444}
+input{width:100%;padding:10px;border-radius:8px;border:1px solid #ddd;margin-bottom:12px;outline:none}
+.create-btn{background:linear-gradient(90deg,#6a5cff,#8e7aff);color:#fff;border:0;padding:10px;border-radius:8px;cursor:pointer;font-weight:700}
+.create-btn.alt{background:#eee;color:#333}
+.user-card{background:#fff;padding:18px;border-radius:12px;margin-top:12px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+.user-card h2{margin:0 0 10px 0}
+.btn-group{display:flex;gap:10px;justify-content:center;margin-top:10px}
+.primary-btn{background:linear-gradient(90deg,#6a5cff,#8e7aff);color:#fff;border:0;padding:9px 14px;border-radius:8px;cursor:pointer}
+.secondary-btn{background:#666;color:#fff;border:0;padding:9px 14px;border-radius:8px;cursor:pointer}
+
+@media (max-width:900px){
+  .container{flex-direction:column;width:100%;max-width:520px}
+  .right-section{width:100%;border-radius:0 0 12px 12px}
+}

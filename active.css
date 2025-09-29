@@ -1,0 +1,169 @@
+/* --- Basic Reset and Variables --- */
+:root {
+    --gradient-start: #5a3f9e; /* Darker Purple */
+    --gradient-end: #7b5ee1; /* Lighter Purple/Blue */
+    --card-bg: #ffffff;
+    --primary-color: #6a5acd;
+    --logout-color: #dc3545;
+    --status-active-bg: #d4edda; /* Light Green */
+    --status-active-text: #155724; /* Dark Green */
+    --footer-synced-bg: #d1e7dd; /* Lighter Green */
+    --footer-synced-text: #0f5132;
+    --text-color: #333;
+    --label-color: #555;
+    --border-radius: 10px;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+a{
+  text-decoration: none;
+  color: #fff;
+}
+/* --- Background Gradient (matches the previous examples) --- */
+.background-gradient {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- Dashboard Card Styling --- */
+.dashboard-card {
+    width: 350px;
+    max-width: 90%;
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--text-color);
+    text-align: center;
+    margin: 0 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* --- Information Rows Styling --- */
+.profile-section, .location-section {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+}
+
+.location-section {
+    border-bottom: none;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 0.95em;
+}
+
+.label {
+    font-weight: 500;
+    color: var(--label-color);
+    /* Adjust width for better alignment, especially for the "Session ID" row */
+    flex-basis: 40%; 
+    text-align: left;
+}
+
+.value {
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: right;
+    flex-basis: 60%;
+    word-wrap: break-word; /* Allows long strings to wrap */
+}
+
+/* Specific adjustment for the Session ID row where the label is short but the value is very long */
+.wide-value .label {
+    flex-basis: 25%; 
+}
+.wide-value .value {
+    flex-basis: 75%;
+    font-size: 0.85em; /* Smaller font for long IDs */
+}
+
+
+/* --- Location Status Indicator --- */
+.location-status-indicator {
+    padding: 12px;
+    margin: 20px 0;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    text-align: center;
+}
+
+.location-status-indicator.active {
+    background-color: var(--status-active-bg);
+    color: var(--status-active-text);
+}
+
+.active-dot {
+    color: #28a745; /* Green dot color */
+    margin-right: 8px;
+    font-size: 0.8em;
+}
+
+/* --- Logout Button --- */
+.action-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.logout-button {
+    background-color: var(--logout-color); /* Red */
+    color: white;
+}
+
+.logout-button:hover {
+    background-color: #c82333;
+}
+
+/* --- Footer Status Message --- */
+.footer-status-message {
+    padding: 8px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    text-align: center;
+    font-weight: 500;
+}
+
+.footer-status-message.synced {
+    background-color: var(--footer-synced-bg);
+    color: var(--footer-synced-text);
+}
+
+/* --- Responsiveness (for the side menu on a phone view) --- */
+/* The layout suggests a side menu hidden off-screen, but we only style the main content */
+@media (max-width: 600px) {
+    .dashboard-card {
+        margin: 20px 0;
+        border-radius: 0; /* Full-width on mobile */
+        box-shadow: none;
+    }
+}

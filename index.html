@@ -1,0 +1,134 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bus Tracker - Auth</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="left-section">
+      <div class="icon">🚌</div>
+      <h1>Bus Tracker</h1>
+      <p class="muted">
+        Real-time bus tracking for passengers and drivers. Track buses, manage routes and broadcast driver location.
+      </p>
+
+      <p><strong>For Passengers:</strong> Track nearby buses in real-time</p>
+      <p><strong>For Drivers:</strong> Update your location and manage routes</p>
+    </div>
+
+    <div class="right-section">
+      <div class="role-toggle" id="role-toggle">
+        <button class="active">Passenger</button>
+        <button><a style="color:#1e1e1e" href="driver_login.html">Bus Driver</a></button>
+      </div>
+
+      <p class="signin-text">
+        Already have an account? Use sign in below.
+      </p>
+
+      <form id="auth-form">
+        <label>Email Address</label>
+        <input id="email" type="email" placeholder="you@example.com" required />
+
+        <label>Password</label>
+        <input id="password" type="password" placeholder="password" required />
+
+        <label>Full Name</label>
+        <input id="fullname" type="text" placeholder="John Appleseed" />
+
+        <div style="display:flex; gap:8px;">
+          <button  id="create-btn" type="submit" class="create-btn"><a href="login.html">Create Account</a></button>
+          <button id="signin-btn" type="button" class="create-btn alt"><a style="color:#1e1e1e" href="login.html">Sign In</a></button>
+        </div>
+      </form>
+
+      <!-- user card shown after signin -->
+      <div id="user-card" class="user-card" style="display:none;">
+        <h2 id="welcome-name">Welcome!</h2>
+        <p><strong>Email:</strong> <span id="user-email"></span></p>
+        <p><strong>Account Type:</strong> <span id="user-role"></span></p>
+
+        <div class="btn-group">
+          <button id="enter-tracker" class="primary-btn">Enter Bus Tracker</button>
+          <button id="logout-btn" class="secondary-btn">Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { signUp, signInUser, signOutUser, onAuthChanged, updateUserDoc, getUserDoc } from './firebase.js';
+
+    // DOM refs
+    const roleToggle = document.getElementById('role-toggle');
+    let selectedRole = 'passenger';
+    roleToggle.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        roleToggle.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedRole = btn.textContent.toLowerCase().includes('driver') ? 'driver' : 'passenger';
+      });
+    });
+
+    const authForm = document.getElementById('auth-form');
+    const emailEl = document.getElementById('email');
+    const passEl = document.getElementById('password');
+    const nameEl = document.getElementById('fullname');
+    const createBtn = document.getElementById('create-btn');
+    const signinBtn = document.getElementById('signin-btn');
+
+    const userCard = document.getElementById('user-card');
+    const welcomeName = document.getElementById('welcome-name');
+    const userEmail = document.getElementById('user-email');
+    const userRole = document.getElementById('user-role');
+    const logoutBtn = document.getElementById('logout-btn');
+    const enterTracker = document.getElementById('enter-tracker');
+
+    authForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try {
+        await signUp(emailEl.value.trim(), passEl.value, nameEl.value.trim(), selectedRole);
+        alert('Account created. You are signed in.');
+      } catch (err) {
+        alert(err.message);
+      }
+    });
+
+    signinBtn.addEventListener('click', async () => {
+      try {
+        await signInUser(emailEl.value.trim(), passEl.value);
+        alert('Signed in.');
+      } catch (err) {
+        alert(err.message);
+      }
+    });
+
+    logoutBtn.addEventListener('click', async () => {
+      await signOutUser();
+    });
+
+    enterTracker.addEventListener('click', () => {
+      window.location.href = 'tracker.html';
+    });
+
+    // Auth state UI
+    onAuthChanged(async (user) => {
+      if (user) {
+        const data = await getUserDoc(user.uid);
+        welcomeName.textContent = `Welcome, ${data?.fullName || user.displayName || 'User'}!`;
+        userEmail.textContent = user.email;
+        userRole.textContent = data?.role || 'Passenger';
+        userCard.style.display = 'block';
+        authForm.style.display = 'none';
+      } else {
+        userCard.style.display = 'none';
+        authForm.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

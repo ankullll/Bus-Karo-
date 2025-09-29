@@ -1,0 +1,209 @@
+/* --- Basic Reset and Variables --- */
+:root {
+    --gradient-start: #6a11cb; /* Purple shade */
+    --gradient-end: #2575fc; /* Blue shade */
+    --primary-color: #4b7bec; /* Blue for buttons/links */
+    --text-color-light: #ffffff;
+    --text-color-dark: #343a40;
+    --card-bg: #ffffff;
+    --border-radius: 15px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   height: 100%;
+   width: 100%;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); /* Background for the whole page */
+}
+a{
+  text-decoration: none;
+  color: #fff;
+}
+/* --- Main Container Layout --- */
+.registration-container {
+    display: flex;
+    width: 900px; /* Overall width */
+    max-width: 90%;
+    height: 100%; /* Overall height */
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Left Sidebar (Gradient) --- */
+.sidebar {
+    flex: 1; /* Takes up half the space */
+    background: linear-gradient(135deg, var(--gradient-end), var(--gradient-start)); /* Inverted gradient for contrast */
+    padding: 40px;
+    color: var(--text-color-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bus-emoji {
+    font-size: 4em;
+    margin-bottom: 10px;
+}
+
+.tracker-title {
+    font-size: 2.5em;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.tracker-description {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.info-points p {
+    font-size: 0.9em;
+    margin: 8px 0;
+}
+
+/* --- Right Form Card --- */
+.form-card {
+    flex: 1; /* Takes up the other half */
+    background: var(--card-bg);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Form Header (Toggles) */
+.form-header {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: flex-end; /* Align to the right like in the image */
+}
+
+.toggle-btn {
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 25px;
+    background-color: transparent;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+/* Styling for the active driver button shown in the image */
+.active-driver {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    border-color: var(--primary-color);
+}
+
+.active-passenger {
+    background-color: #f8f9fa; /* Light grey for inactive */
+    color: var(--text-color-dark);
+}
+
+/* Login Prompt */
+.login-prompt {
+    text-align: right;
+    font-size: 0.9em;
+    color: #6c757d;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.sign-in-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Form Fields */
+.registration-form label {
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    font-weight: 500;
+    font-size: 0.9em;
+    color: var(--text-color-dark);
+}
+
+.registration-form input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.registration-form input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.registration-form input::placeholder {
+    color: #adb5bd;
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 30px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+
+.submit-btn:hover {
+    background-color: #3867d6;
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 992px) {
+    .registration-container {
+        flex-direction: column;
+        width: 90%;
+        height: auto;
+        margin: 20px 0;
+    }
+
+    .sidebar {
+        padding: 30px;
+        text-align: center;
+    }
+    
+    .sidebar-content {
+        /* Center content when stacked vertically */
+        align-items: center; 
+    }
+    
+    .info-points {
+        display: none; /* Hide supplementary text on small screens */
+    }
+
+    .form-card {
+        padding: 30px;
+    }
+    
+    .form-header {
+        justify-content: center; /* Center buttons when stacked */
+    }
+    
+    .login-prompt {
+        text-align: center;
+    }
+}
